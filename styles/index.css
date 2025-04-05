@@ -1,0 +1,470 @@
+:root {
+    --primary: #2a9d8f;
+    --secondary: #e9c46a;
+    --dark: #264653;
+    --light: #f1faee;
+    --danger: #e76f51;
+    --success: #2a9d8f;
+
+    /* Dark mode colors */
+    --dark-primary: #1a6b62;
+    --dark-secondary: #bd9e55;
+    --dark-bg: #121212;
+    --dark-surface: #1e1e1e;
+    --dark-text: #f5f5f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+    background-color: var(--light);
+    color: var(--dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+body.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+h1 {
+    margin-bottom: 2rem;
+    color: var(--dark);
+    text-align: center;
+}
+
+body.dark-mode h1 {
+    color: var(--dark-text);
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--dark);
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+body.dark-mode p {
+    color: var(--dark-text);
+}
+
+p:hover {
+    color: var(--primary);
+    transform: scale(1.5);
+}
+
+body.dark-mode p:hover {
+    color: var(--dark-primary);
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.game-container {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+    margin-top: 1rem;
+    position: relative;
+}
+
+body.dark-mode .game-container {
+    background-color: var(--dark-surface);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: var(--dark);
+    border-radius: 0.5rem;
+    color: white;
+}
+
+body.dark-mode .scoreboard {
+    background-color: #000000;
+}
+
+.score {
+    text-align: center;
+}
+
+.score h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.score p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+}
+
+body.dark-mode .score p {
+    color: var(--dark-text);
+}
+
+.battle-area {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0;
+}
+
+.player,
+.computer {
+    text-align: center;
+}
+
+body.dark-mode .player h3,
+body.dark-mode .computer h3 {
+    color: var(--dark-text);
+}
+
+.choice {
+    font-size: 4rem;
+    margin: 1rem 0;
+    background-color: var(--light);
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .choice {
+    background-color: var(--dark-bg);
+}
+
+.player .choice {
+    border: 3px solid var(--primary);
+}
+
+.computer .choice {
+    border: 3px solid var(--danger);
+}
+
+.choices {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.choice-btn {
+    background-color: var(--dark);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.choice-btn:hover {
+    transform: scale(1.1);
+    background-color: var(--primary);
+}
+
+.choice-btn:disabled {
+    background-color: #cccccc;
+    color: #888888;
+    cursor: not-allowed;
+    transform: none;
+    opacity: 0.7;
+}
+
+body.dark-mode .choice-btn:disabled {
+    background-color: #666666;
+    color: #aaaaaa;
+}
+
+.status {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    height: 1.5rem;
+}
+
+.result {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    height: 2rem;
+}
+
+.winner {
+    color: var(--success);
+}
+
+.loser {
+    color: var(--danger);
+}
+
+.tie {
+    color: var(--secondary);
+}
+
+.button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--secondary);
+    color: var(--dark);
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.button:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+body.dark-mode .button {
+    background-color: var(--dark-secondary);
+    color: #000000;
+}
+
+body.dark-mode .button:hover {
+    background-color: var(--dark-primary);
+    color: var(--dark-text);
+}
+
+.button:disabled {
+    background-color: #cccccc;
+    color: #888888;
+    cursor: not-allowed;
+}
+
+body.dark-mode .button:disabled {
+    background-color: #666666;
+    color: #aaaaaa;
+}
+
+.reset-btn {
+    display: block;
+    margin: 1rem auto;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.game-over {
+    text-align: center;
+    margin-top: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 1rem;
+    animation: fadeIn 0.5s ease-in;
+}
+
+body.dark-mode .game-over {
+    background-color: rgba(30, 30, 30, 0.9);
+}
+
+.game-over.win-screen {
+    background-color: rgba(42, 157, 143, 0.85);
+}
+
+.game-over.lose-screen {
+    background-color: rgba(231, 111, 81, 0.85);
+}
+
+body.dark-mode .game-over.win-screen {
+    background-color: rgba(26, 107, 98, 0.85);
+}
+
+body.dark-mode .game-over.lose-screen {
+    background-color: rgba(180, 70, 50, 0.85);
+}
+
+.game-over h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.game-over .emoji {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    animation: bounce 0.8s infinite alternate;
+}
+
+.info-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.info-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .info-content {
+    background-color: var(--dark-surface);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.info-content h2 {
+    margin-bottom: 1rem;
+    color: var(--dark);
+}
+
+body.dark-mode .info-content h2,
+body.dark-mode .info-content h3,
+body.dark-mode .info-content p,
+body.dark-mode .info-content li {
+    color: var(--dark-text);
+}
+
+.info-content ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.info-content li {
+    margin-bottom: 0.5rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--dark);
+}
+
+body.dark-mode .close-btn {
+    color: var(--dark-text);
+}
+
+.icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
+.choice.animate {
+    animation: pulse 0.5s ease;
+}
+
+.toggle-dark-mode {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 5;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 600px) {
+    .battle-area {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .choice {
+        font-size: 3rem;
+        width: 80px;
+        height: 80px;
+    }
+
+    .choice-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+}

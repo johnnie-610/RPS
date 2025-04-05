@@ -1,12 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>RPS</title>
-</head>
-<body>
-  <script src="rps.js" async defer></script>
-</body>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <script src="scripts/rps.js" async defer></script>
+    <link rel="stylesheet" href="styles/index.css">
+  </head>
+
+  <body>
+    <h1>Rock Paper Scissors</h1>
+    <p>First to 5 points wins!</p>
+
+    <div class="header-actions">
+      <button id="info-btn" class="button">
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+        </svg>
+        How to Play
+      </button>
+      <button id="sound-toggle" class="button">
+        <svg id="sound-on-icon" class="icon" viewBox="0 0 24 24">
+          <path
+            d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+        </svg>
+        Sound: On
+      </button>
+      <button id="dark-mode-toggle" class="button">
+        <svg class="icon" id="dark-mode-icon" viewBox="0 0 24 24">
+          <path
+            d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z" />
+        </svg>
+        Light Mode
+      </button>
+    </div>
+
+    <div class="game-container">
+      <div class="scoreboard">
+        <div class="score">
+          <h2>You</h2>
+          <p id="player-score">0</p>
+        </div>
+        <div class="score">
+          <h2>Computer</h2>
+          <p id="computer-score">0</p>
+        </div>
+      </div>
+      <div class="status" id="status">Choose your weapon!</div>
+      <div class="result" id="result"></div>
+      <div class="battle-area">
+        <div class="player">
+          <h3>Your Choice</h3>
+          <div class="choice" id="player-choice">?</div>
+        </div>
+        <div class="computer">
+          <h3>Computer's Choice</h3>
+          <div class="choice" id="computer-choice">?</div>
+        </div>
+      </div>
+      <div class="choices">
+        <button class="choice-btn" data-choice="rock">👊</button>
+        <button class="choice-btn" data-choice="paper">✋</button>
+        <button class="choice-btn" data-choice="scissors">✌️</button>
+      </div>
+      <div class="game-over hidden" id="game-over">
+        <div class="emoji" id="result-emoji"></div>
+        <h2 id="winner-text"></h2>
+        <button class="button reset-btn" id="play-again">Play Again</button>
+      </div>
+    </div>
+
+    <!-- Info Modal -->
+    <div class="info-modal hidden" id="info-modal">
+      <div class="info-content">
+        <button class="close-btn" id="close-info">×</button>
+        <h2>How to Play Rock Paper Scissors</h2>
+        <p>Rock Paper Scissors is a simple hand game usually played between two people. In this digital version, you'll
+          play against the computer.</p>
+        <h3>Rules:</h3>
+        <ul>
+          <li><strong>Rock (👊)</strong> beats Scissors</li>
+          <li><strong>Paper (✋)</strong> beats Rock</li>
+          <li><strong>Scissors (✌️)</strong> beats Paper</li>
+        </ul>
+        <h3>Game Play:</h3>
+        <ul>
+          <li>Click on one of the three buttons to make your choice</li>
+          <li>The computer will also make a choice</li>
+          <li>The winner of the round gets one point</li>
+          <li>Ties don't count - no points awarded</li>
+          <li>The first player to reach 5 points wins the game</li>
+        </ul>
+        <p>Good luck and have fun!</p>
+      </div>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="selection-sound" src="sounds/selection.wav" preload="auto"></audio>
+    <audio id="win-sound" src="sounds/win.wav" preload="auto"></audio>
+    <audio id="lose-sound" src="sounds/lose.wav" preload="auto"></audio>
+    <audio id="game-win-sound" src="sounds/game-win.wav" preload="auto"></audio>
+    <audio id="game-lose-sound" src="sounds/game-lose.mp3" preload="auto"></audio>
+
+  </body>
+
 </html>
